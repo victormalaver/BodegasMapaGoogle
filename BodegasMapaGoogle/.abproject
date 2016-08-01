@@ -1,0 +1,45 @@
+{
+  "ProjectName": "BodegasMapaGoogle",
+  "ProjectGuid": "b2ab4916-a3a9-4c49-9ca4-d4a4101f1255",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.BodegasMapaGoogle",
+  "DisplayName": "BodegasMapaGoogle",
+  "Author": "",
+  "Description": "BodegasMapaGoogle",
+  "BundleVersion": "1.0",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
+  "FrameworkVersion": "4.0.0",
+  "AndroidPermissions": [
+    "android.permission.INTERNET"
+  ],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "true",
+  "iOSStatusBarStyle": "Default",
+  "Framework": "Cordova",
+  "WP8TileTitle": "",
+  "WP8Publisher": "",
+  "WP8Capabilities": [
+    "ID_CAP_NETWORKING",
+    "ID_CAP_WEBBROWSERCOMPONENT"
+  ],
+  "WP8Requirements": [],
+  "WP8PublisherID": "{74b17102-5c9e-40bc-9e2d-45082a63f0f0}",
+  "WP8ProductID": "{c1f40d3b-19c0-4a78-9308-0a254125e109}",
+  "WPSdk": "8.0",
+  "WP8PackageIdentityName": "1234Telerik.BodegasMapaGoogle",
+  "WP8WindowsPublisherName": "CN=Telerik",
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ]
+}
