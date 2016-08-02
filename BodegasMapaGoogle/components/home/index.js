@@ -206,7 +206,6 @@ function setMarkers() {
     // for debugging/exploratory use in console
     window.map = map;
     window.oms = oms;
-    // var geoloccontrol = new klokantech.GeolocationControl(map, 18);
 }
 // function makeInfoWindowEvent(map, infowindow, contentString, marker) {
 //     google.maps.event.addListener(marker, 'click', function() {
@@ -232,7 +231,7 @@ function getStateGPS() {
     var x = 1;
 
     function onSuccess(position) {
-        alert(position.coords.latitude + " - " + position.coords.longitude);
+        // alert(position.coords.latitude + " - " + position.coords.longitude);
         if (x == 1) {
             navigator.geolocation.clearWatch(watchID);
             x = 0;
@@ -242,10 +241,10 @@ function getStateGPS() {
     // onError Callback receives a PositionError object
     //
     function onError(error) {
-        
+
         $("#contentAlertHome").html("Encienda su GPS");
         openModal('modalview-alert-home');
-        
+
         // switch (error.code) {
         //     case 3:
         //         break;
@@ -264,12 +263,12 @@ function getStateGPS() {
 }
 
 
-function goToConfiguration(){
-     if(typeof cordova.plugins.settings.openSetting != undefined){
-        cordova.plugins.settings.open(function(){
+function goToConfiguration() {
+    if (typeof cordova.plugins.settings.openSetting != undefined) {
+        cordova.plugins.settings.open(function () {
                 console.log("opened settings")
             },
-            function(){
+            function () {
                 console.log("failed to open settings")
             });
     }

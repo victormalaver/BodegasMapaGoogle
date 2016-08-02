@@ -110,9 +110,9 @@ function closeModal(modal) {
 }
 
 function openModal(modal) {
-    $("#" + modal).css({"height":"185px", width:"100%"});
     var mv = $("#" + modal).data("kendoMobileModalView");
     mv.shim.popup.options.animation.open.effects = "zoom";
     mv.open();
-    
+    // $("#" + modal).css("width","300px");
+    // $("#" + modal).css("height","185px");
 }
