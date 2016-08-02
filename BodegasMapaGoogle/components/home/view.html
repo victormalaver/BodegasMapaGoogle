@@ -10,3 +10,18 @@
         <div id="geolocationIcon" style="width: 18px; height: 18px; opacity: 0.9; background-image: url(&quot;https://cdn.klokantech.com/maptilerlayer/v1/geolocation.png&quot;); background-size: 36px 18px; background-position: -18px center;"></div>
     </div> -->
 </div>
+<div data-role="modalview" id="modalview-alert-home">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span>Mensaje</span>
+<!--             <a onclick="closeModal('modalview-alert-home')" data-role="button" data-align="right"><span class="flaticon-close"></span></a> -->
+        </div>
+    </div>
+    <ul data-role="listview" data-style="inset">
+        <li id="contentAlertHome" class="form-content-item"></li>
+    </ul>
+    <div class="button-group">
+        <a data-role="button" onclick="closeModal('modalview-alert-home')" >Cancelar</a>
+        <a data-role="button" class="primary"  onclick="goToConfiguration();" >Aceptar</a>
+    </div>
+</div>

@@ -104,20 +104,15 @@
 
 }());
 
-// START_CUSTOM_CODE_kendoUiMobileApp
-// Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
+function closeModal(modal) {
+    // $("#" + modal + " .primary.km-widget.km-button").removeAttr("onclick");
+    $("#" + modal).kendoMobileModalView("close");
+}
 
-// END_CUSTOM_CODE_kendoUiMobileApp
-
-// var map;
-
-// function initMap() {
-//     map = new google.maps.Map(document.getElementById('map'), {
-//         center: {
-//             lat: -12.106388,
-//             lng: -77.035458
-//         },
-//         zoom: 18
-//     });
-//     setMarkers(map);
-// }
+function openModal(modal) {
+    $("#" + modal).css({"height":"185px", width:"100%"});
+    var mv = $("#" + modal).data("kendoMobileModalView");
+    mv.shim.popup.options.animation.open.effects = "zoom";
+    mv.open();
+    
+}

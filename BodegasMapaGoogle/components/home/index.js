@@ -8,8 +8,8 @@ app.home = kendo.observable({
         // for (var i = 0; i < bodegas.length; i++) {
         // 	console.log(bodegas[i].id);
         // }
-        
-        
+
+
         // var baseJitter = 2.5;
         // var clusterJitterMax = 0.1;
         // var rnd = Math.random;
@@ -81,18 +81,6 @@ function setMarkers() {
     // <area> element 'poly' which traces out a polygon as a series of X,Y points.
     // The final coordinate closes the poly by connecting to the first coordinate.
 
-    var shape = {
-      coords: [1, 1, 1, 20, 18, 20, 18, 1],
-      type: 'poly'
-    };
-
-
-
-
-
-
-
-
 
     //     var infowindow = new google.maps.InfoWindow();
     //     for (var i = 0; i < bodegas.length; i++) {
@@ -129,23 +117,19 @@ function setMarkers() {
     });
     var usualColor = 'eebb22';
     var spiderfiedColor = 'ffee22';
-                   
+
     var image = {
-        url: 'Mapa/images/marker-icon.png',
-		shadowUrl: 'Mapa/images/marker-shadow.png',
+        url: 'Mapa/images/iconbodega.png',
+        shadowUrl: 'Mapa/images/marker-shadow.png',
         // This marker is 20 pixels wide by 32 pixels high.
         // size: new google.maps.Size(40, 60),
         // // The origin for this image is (0, 0).
         // origin: new google.maps.Point(0, 0),
         // // The anchor for this image is the base of the flagpole at (0, 32).
         // anchor: new google.maps.Point(0, 32)
-	};
+    };
     var iconWithColor = function (color) {
-                   
-                   
-        return 'https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin|+|' +
-            color + '|000000|ffff00';
-                   
+        return 'Mapa/images/iconbodega.png';
     }
     var shadow = new gm.MarkerImage(
         'https://www.google.com/intl/en_ALL/mapfiles/shadow50.png',
@@ -155,21 +139,21 @@ function setMarkers() {
     );
 
     oms.addListener('click', function (marker) {
-		// map.setCenter(marker.getPosition());
-		// map.setZoom(18);
+        // map.setCenter(marker.getPosition());
+        // map.setZoom(18);
         iw.setContent(marker.desc);
         iw.open(map, marker);
     });
     oms.addListener('spiderfy', function (markers) {
         for (var i = 0; i < markers.length; i++) {
-            markers[i].setIcon(iconWithColor(spiderfiedColor));
+            markers[i].setIcon(image);
             markers[i].setShadow(null);
         }
         // iw.close();
     });
     oms.addListener('unspiderfy', function (markers) {
         for (var i = 0; i < markers.length; i++) {
-            markers[i].setIcon(iconWithColor(usualColor));
+            markers[i].setIcon(image);
             markers[i].setShadow(shadow);
         }
     });
@@ -191,13 +175,13 @@ function setMarkers() {
     // }
 
     for (var i = 0; i < bodegas.length; i++) {
-        var loc = new gm.LatLng(parseFloat(bodegas[i].latitud),  parseFloat(bodegas[i].longitud));
-            bounds.extend(loc);
+        var loc = new gm.LatLng(parseFloat(bodegas[i].latitud), parseFloat(bodegas[i].longitud));
+        bounds.extend(loc);
         var marker = new google.maps.Marker({
             position: loc,
             map: map,
             icon: image,
-			shadowUrl: 'Mapa/images/marker-shadow.png',
+            shadowUrl: 'Mapa/images/marker-shadow.png',
             // shape: shape,
             title: bodegas[i].nombre,
             zIndex: i
@@ -214,15 +198,15 @@ function setMarkers() {
             '(last visited June 22, 2009).</p>' +
             '</div>' +
             '</div>';
-    		marker.desc =contentString;
-        	oms.addMarker(marker);
-        
+        marker.desc = contentString;
+        oms.addMarker(marker);
+
     }
     map.fitBounds(bounds);
     // for debugging/exploratory use in console
     window.map = map;
     window.oms = oms;
-	// var geoloccontrol = new klokantech.GeolocationControl(map, 18);
+    // var geoloccontrol = new klokantech.GeolocationControl(map, 18);
 }
 // function makeInfoWindowEvent(map, infowindow, contentString, marker) {
 //     google.maps.event.addListener(marker, 'click', function() {
@@ -231,34 +215,62 @@ function setMarkers() {
 //   });
 // }
 
-function getStateGPS(){
-     // onSuccess Callback
+function getStateGPS() {
+    // cordova.plugins.diagnostic.isLocationAvailable(function(available){
+    //     console.log("Location is " + (available ? "available" : "not available"));
+    // }, function(error){
+    //     console.error("The following error occurred: "+error);
+    // });
+
+
+
+
+    // onSuccess Callback
     //   This method accepts a `Position` object, which contains
     //   the current GPS coordinates
     //
+    var x = 1;
+
     function onSuccess(position) {
-        alert(position.coords.latitude + " - " + position.coords.longitude );
-        return stop();
+        alert(position.coords.latitude + " - " + position.coords.longitude);
+        if (x == 1) {
+            navigator.geolocation.clearWatch(watchID);
+            x = 0;
+        }
     }
 
     // onError Callback receives a PositionError object
     //
     function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-        return stop();
+        
+        $("#contentAlertHome").html("Encienda su GPS");
+        openModal('modalview-alert-home');
+        
+        // switch (error.code) {
+        //     case 3:
+        //         break;
+        //     default:
+        //         alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+        //         break;
+        // }
     }
 
     // Options: throw an error if no update is received every 30 seconds.
     //
-    var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 3000 });
-   
-     return stop();
+    var watchID = navigator.geolocation.watchPosition(onSuccess, onError, {
+        timeout: 3000
+    });
 
-    function stop() {
-        if (watchID) {
-            clearTimeout(watchID);
-            watchID = 0;
-        }
+}
+
+
+function goToConfiguration(){
+     if(typeof cordova.plugins.settings.openSetting != undefined){
+        cordova.plugins.settings.open(function(){
+                console.log("opened settings")
+            },
+            function(){
+                console.log("failed to open settings")
+            });
     }
 }
