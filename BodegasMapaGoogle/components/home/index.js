@@ -231,12 +231,12 @@ function getStateGPS() {
     var x = 1;
 
     function onSuccess(position) {
-        // alert(position.coords.latitude + " - " + position.coords.longitude);
+        // alert(position.coords.latAqui nitude + " - " + position.coords.longitude);
         if (x == 1) {
             navigator.geolocation.clearWatch(watchID);
             x = 0;
         }
-    }
+    } 
 
     // onError Callback receives a PositionError object
     //
