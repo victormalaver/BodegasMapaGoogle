@@ -229,23 +229,23 @@ function getStateGPS() {
     //   the current GPS coordinates
     //
     var x = 1;
-
+	var valmar = {lat: -12.106388,lng: -77.035458};
     function onSuccess(position) {
-        alert(position.coords.latitude + " - " + position.coords.longitude);
+        // alert(position.coords.latitude + " - " + position.coords.longitude);
         if (x == 1) {
             navigator.geolocation.clearWatch(watchID);
             x = 0;
-            map.setCenter( parseFloat(position.coords.latitude) ,parseFloat(position.coords.longitude) );
+            map.setCenter(valmar);
         }
     }
 
     // onError Callback receives a PositionError object
     //
     function onError(error) {
-
-        $("#contentAlertHome").html("Encienda su GPS");
-        openModal('modalview-alert-home');
-
+		if(x!==0){ 
+        	$("#contentAlertHome").html("Encienda su GPS");
+        	openModal('modalview-alert-home');
+        }
         // switch (error.code) {
         //     case 3:
         //         break;
