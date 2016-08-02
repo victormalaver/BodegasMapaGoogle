@@ -6,14 +6,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
     <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
-
     <link href="styles/overrides.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
-
     <script src="cordova.js"></script>
     <script src="kendo/js/jquery.min.js"></script>
     <script src="kendo/js/kendo.mobile.min.js"></script>
     <script src="app.js"></script>
+    <!--     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsVp8H-Amj0ZaE6GVrYjJm-yxISc9MXdg&callback=initMap"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsVp8H-Amj0ZaE6GVrYjJm-yxISc9MXdg"></script>
+    <script src="Mapa/MapTilerLayer.js"></script>
+    <script src="Mapa/oms.min.js"></script>
 </head>
 
 <body id="kendoUiMobileApp">
@@ -32,13 +34,10 @@
             </div>
         </footer>
     </div>
-
-
     <div id="navigation-show-more-view" data-role="view" data-title="Show More" data-layout="main">
         <ul data-role="listview" data-style="inset" data-click="app.listViewClick">
         </ul>
     </div>
-
     <div data-role="layout" data-id="main-nonav">
         <header data-role="header">
             <div data-role="navbar">
@@ -50,7 +49,6 @@
     </div>
     <!-- START_CUSTOM_CODE_kendoUiMobileApp -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-
     <!-- END_CUSTOM_CODE_kendoUiMobileApp -->
 </body>
 
