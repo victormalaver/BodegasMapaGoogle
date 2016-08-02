@@ -37,7 +37,7 @@ app.home = kendo.observable({
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
 // END_CUSTOM_CODE_home
-
+var map;
 function setMarkers() {
     // var gm = google.maps;
     //  var map = new gm.Map(document.getElementById('map_canvas'), {
@@ -47,7 +47,7 @@ function setMarkers() {
     //  });
 
     var gm = google.maps;
-    var map = new gm.Map(document.getElementById('map_canvas'), {
+    map = new gm.Map(document.getElementById('map_canvas'), {
         center: {
             lat: -12.106388,
             lng: -77.035458
@@ -231,12 +231,13 @@ function getStateGPS() {
     var x = 1;
 
     function onSuccess(position) {
-        // alert(position.coords.latAqui nitude + " - " + position.coords.longitude);
+        alert(position.coords.latitude + " - " + position.coords.longitude);
         if (x == 1) {
             navigator.geolocation.clearWatch(watchID);
             x = 0;
+            map.setCenter( parseFloat(position.coords.latitude) ,parseFloat(position.coords.longitude) );
         }
-    } 
+    }
 
     // onError Callback receives a PositionError object
     //
